@@ -1,0 +1,15 @@
+.icon-chat-history {
+	background: url('../images/com_openchat_chat-history-48.png');
+	background-repeat: no-repeat;  
+  	background-attachment: scroll;  
+  	background-position: 0% 0%;
+  	background-size: contain;
+}
+
+.icon-blocked-chat {
+	background: url('../images/com_openchat_blocked-users-icon-48.png');
+	background-repeat: no-repeat;  
+  	background-attachment: scroll;  
+  	background-position: 0% 0%;
+  	background-size: contain;
+}

@@ -43,7 +43,7 @@
 		</languages>
 		<menu link="option=com_openchat">COM_OPENCHAT_MENU_LABEL</menu>
 			<submenu>
-				<menu link="option=com_openchat&amp;task=history">COM_OPENCHAT_HISTORY_MENU_LABEL</menu>
+				<menu link="option=com_openchat&amp;task=chat_history">COM_OPENCHAT_HISTORY_MENU_LABEL</menu>
 				<menu link="option=com_openchat&amp;task=blocked_users">COM_OPENCHAT_BLOCK_USERS_MENU_LABEL</menu>
 			</submenu>
 	</administration>
