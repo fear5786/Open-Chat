@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="3.4.1" method="upgrade">
+	<name>COM_OPENCHAT</name>
+	<author>Aphikrit Saravasri</author>
+	<version>1.0.0</version>
+	<dateCreation>JUNE 2015</dateCreation>
+	<description>COM_OPENCHAT_DESC</description>
+	<media destination="com_openchat" folder="media">
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>images</folder>
+	</media>
+	<files folder="components/com_openchat">
+		<filename>openchat.php</filename>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages folder="language/en-GB">
+		<language tag="en-GB">en-GB.com_openchat.ini</language>
+	</languages>
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">uninstall.sql</file>
+		</sql>
+	</uninstall>
+	<administration>
+		<files folder="administrator/components/com_openchat">
+			<filename>openchat.php</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>controller.php</filename>
+			<filename>install.sql</filename>
+			<filename>uninstall.sql</filename>
+		</files>
+		<languages folder="administrator/language/en-GB">
+			<language tag="en-GB">en-GB.com_openchat.sys.ini</language>
+			<language tag="en-GB">en-GB.com_openchat.ini</language>
+		</languages>
+		<menu link="option=com_openchat">COM_OPENCHAT_MENU_LABEL</menu>
+			<submenu>
+				<menu link="option=com_openchat&amp;task=history">COM_OPENCHAT_HISTORY_MENU_LABEL</menu>
+				<menu link="option=com_openchat&amp;task=blocked_users">COM_OPENCHAT_BLOCK_USERS_MENU_LABEL</menu>
+			</submenu>
+	</administration>
+</extension>
