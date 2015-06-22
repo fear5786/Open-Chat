@@ -10,7 +10,7 @@ JQ(document).ready(function(){
 	 */
 	var timer=setInterval(function(){
 		loadRecentChats();
-	},500);
+	},3000);
 
 	/**
  	* Load Recent Check 
