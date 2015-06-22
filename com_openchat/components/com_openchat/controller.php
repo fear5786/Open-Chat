@@ -19,18 +19,7 @@ class OpenChatController extends JControllerLegacy
 			<div id="openchat">
 				<div id="chat-msg-area">
 					<ul id="chat-msg">
-						<li>
-							<span class="user">Mr. Monkey D Luffy</span>
-							<span class="msg">Hello, how it goes?</span>
-						</li>
-						<li>
-							<span class="user">Mr. Monkey D Luffy</span>
-							<span class="msg">I just defeated Doffie.</span>
-						</li>
-						<li>
-							<span class="user">Mr. Monkey D Luffy</span>
-							<span class="msg">Ya YA</span>
-						</li>
+						
 					</ul>
 				</div>
 
@@ -75,7 +64,7 @@ class OpenChatController extends JControllerLegacy
 		echo json_encode($res);
 		$app->close();
 	}
-
+	
 	private function saveChat($msg,$userId){
 		$userId=(INT)$userId;
 		$db=JFactory::getDBO();
@@ -97,4 +86,22 @@ class OpenChatController extends JControllerLegacy
 		 $db->setQuery($query);
 		 return $db->loadObject();
 	}
+
+	function getRecentChats(){
+		 $res=array();
+		 $app=JFactory::getApplication();
+		 $db=JFactory::getDBO();
+		 $query="SELECT c.id,c.msg,u.name FROM #__openchat_msg as c LEFT JOIN #__users as u ON c.user_id=u.id ORDER BY c.id DESC LIMIT 0,50";
+		 $db->setQuery($query);	
+		 $rows=$db->loadObjectList();
+		 if($rows){
+			$res['chats']=$rows;
+			$res['status']=true;
+		 }else{
+			$res['status']=false;
+		 }
+		 echo json_encode($res);
+		 $app->close();
+	}
+
 }
