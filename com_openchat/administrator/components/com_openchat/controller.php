@@ -1,5 +1,5 @@
 <?
-defined('_JEXEC') or die('Access Denined');
+defined('_JEXEC') or die('Access Denied');
 jimport ('joomla.controller');
 class OpenChatController extends JcontrollerLegacy
 {
