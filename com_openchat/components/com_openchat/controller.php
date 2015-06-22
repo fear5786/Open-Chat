@@ -91,7 +91,14 @@ class OpenChatController extends JControllerLegacy
 		 $res=array();
 		 $app=JFactory::getApplication();
 		 $db=JFactory::getDBO();
-		 $query="SELECT c.id,c.msg,u.name FROM #__openchat_msg as c LEFT JOIN #__users as u ON c.user_id=u.id ORDER BY c.id DESC LIMIT 0,50";
+		 $max_chat_id=JRequest::getInt('max_chat_id',0);
+		 if($max_chat_id>0){
+			$query="SELECT c.id,c.msg,u.name FROM #__openchat_msg as c LEFT JOIN #__users as u ON c.user_id=u.id WHERE c.id>$max_chat_id ORDER BY c.id DESC LIMIT 0,50";
+		 }else{
+		 	$query="SELECT c.id,c.msg,u.name FROM #__openchat_msg as c LEFT JOIN #__users as u ON c.user_id=u.id ORDER BY c.id DESC LIMIT 0,50";
+
+		 }
+		 
 		 $db->setQuery($query);	
 		 $rows=$db->loadObjectList();
 		 if($rows){
