@@ -6,11 +6,22 @@ JQ(document).ready(function(){
 		JQ('ul#chat-msg').scrollTop(JQ('ul#chat-msg')[0].scrollHeight);
 	}
 	/**
+ 	*On Press Enter Post Chat 
+ 	*/
+ 
+ 	JQ(document).on('keyup','#msg',function(e){
+ 		console.log(e.keyCode);
+ 		if(e.keyCode==13){
+ 			JQ('#chat_btn').click();
+ 		}
+ 	});
+
+	/**
 	 * Check Recent Chat
 	 */
 	var timer=setInterval(function(){
 		loadRecentChats();
-	},3000);
+	},6000);
 
 	/**
  	* Load Recent Check 

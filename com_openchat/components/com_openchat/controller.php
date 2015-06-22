@@ -7,7 +7,6 @@ jimport('joomla.controller');
 class OpenChatController extends JControllerLegacy
 {
 
-	
 	function chat()
 	{
 		$doc=JFactory::getDocument();
@@ -110,5 +109,7 @@ class OpenChatController extends JControllerLegacy
 		 echo json_encode($res);
 		 $app->close();
 	}
+
+
 
 }
