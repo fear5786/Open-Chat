@@ -40,6 +40,7 @@ class OpenChatController extends JControllerLegacy
 		$app=JFactory::getApplication();
 		$msg=JRequest::getString('msg');
 		$userId=JFactory::getUser()->id;
+
 		if($msg==""){
 			$res['status']=false;
 			$res['msg']="Please Enter Message";
@@ -52,7 +53,12 @@ class OpenChatController extends JControllerLegacy
 			echo json_encode($res);
 			exit();
 		}
-
+		if($this->isUserBlocked($userId)){
+			$res['status']=false;
+			$res['msg']="Your ID was BLOCKED by Random-Admin!!";
+			echo json_encode($res);
+			exit();
+		}
 		if($chatId=$this->saveChat($msg,$userId)){
 			$chatDetails=$this->getChatDetailsById($chatId);
 			$res['chatDetails']=$chatDetails;
@@ -64,6 +70,22 @@ class OpenChatController extends JControllerLegacy
 		$app->close();
 	}
 	
+	/**
+	 * User Is Blocked
+	 */
+	private function isUserBlocked($user_id){
+		$db=JFactory::getDBO();
+		$query="SELECT * FROM #__openchat_blocked_users WHERE user_id = $user_id";
+		$db->setQuery($query);
+		$db->query();
+		$total=$db->getNumRows();
+		if($total>0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	private function saveChat($msg,$userId){
 		$userId=(INT)$userId;
 		$db=JFactory::getDBO();
